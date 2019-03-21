@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-animations": "^1.0.0",
     "react-card-flip": "^0.5.0",

@@ -54,6 +54,8 @@ export default class App extends Component {
 	constructor(props){
 		super(props);
 
+		this._api = props.api;
+
 		this.state = {
 			isFlipped: false,
 			isLoading: true,
@@ -69,7 +71,7 @@ export default class App extends Component {
 	}
 
 	componentDidMount(){
-		DeckApi.getCards().then((cards) =>{
+		this._api.getCards().then((cards) =>{
 			this.setState({
 				isLoading: false,
 				cards: [...cards]
@@ -149,4 +151,8 @@ export default class App extends Component {
 			<Loading>Loading...</Loading>
 		);
 	}
+};
+
+App.defaultProps = {
+	api: DeckApi
 };
