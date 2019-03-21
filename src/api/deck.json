@@ -1,0 +1,24 @@
+{
+  "cards": [
+    {
+      "id": 0,
+      "question": "Why is React considered a library?",
+      "answer": "Because it only focuses on one thing!"
+    },
+    {
+      "id": 1,
+      "question": "What is prop drilling?",
+      "answer": "The process of passing properties down the Component tree"
+    },
+    {
+      "id": 2,
+      "question": "What is state lifting?",
+      "answer": "Maintaining the state in the top of the component tree, by passing callbacks to modify it."
+    },
+    {
+      "id": 3,
+      "question": "What is a styled component?",
+      "answer": "Is a component that has some css applied to it. Using CSS in JS techniques"
+    }
+  ]
+}

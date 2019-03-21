@@ -30,13 +30,13 @@ const Deckbutton = styled.button`
 	margin-left: 10px;
 `;
 
-export default () => (
+export default (props) => (
 	<Header>
 		<DeckTitle style={{flexGrow: 1}}>Current Deck</DeckTitle>
 		<DeckActions>
-			<Deckbutton>Previous</Deckbutton>
-			<Deckbutton>Next</Deckbutton>
-			<Deckbutton>Random</Deckbutton>
+			<Deckbutton onClick={props.onPrev}>Previous</Deckbutton>
+			<Deckbutton onClick={props.onNext}>Next</Deckbutton>
+			<Deckbutton onClick={props.onRandom}>Random</Deckbutton>
 		</DeckActions>
 	</Header>
 )
