@@ -7972,6 +7972,11 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-animations@^1.0.0:
+  version "1.0.0"
+  resolved "http://artifactory-slc.oraclecorp.com/artifactory/api/npm/npm-virtual/react-animations/-/react-animations-1.0.0.tgz#d96222920dfeabec8984d9b2ef2c5a5aadb40f06"
+  integrity sha1-2WIikg3+q+yJhNmy7yxaWq20DwY=
+
 react-app-polyfill@^0.2.2:
   version "0.2.2"
   resolved "http://artifactory-slc.oraclecorp.com/artifactory/api/npm/npm-virtual/react-app-polyfill/-/react-app-polyfill-0.2.2.tgz#a903b61a8bfd9c5e5f16fc63bebe44d6922a44fb"
