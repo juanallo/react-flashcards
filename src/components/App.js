@@ -97,7 +97,8 @@ export default class App extends Component {
 	render(){
 		return (
 			<AppStyled>
-				<Header onNext={this.handleNextCard}
+				<Header title="Learning React Deck"
+						onNext={this.handleNextCard}
 				        onPrev={this.handlePreviousCard}
 				        onRandom={this.handleRandomCard}
 				/>

@@ -32,7 +32,7 @@ const Deckbutton = styled.button`
 
 export default (props) => (
 	<Header>
-		<DeckTitle style={{flexGrow: 1}}>Current Deck</DeckTitle>
+		<DeckTitle style={{flexGrow: 1}}>{props.title}</DeckTitle>
 		<DeckActions>
 			<Deckbutton onClick={props.onPrev}>Previous</Deckbutton>
 			<Deckbutton onClick={props.onNext}>Next</Deckbutton>
