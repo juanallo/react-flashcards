@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^16.8.4",
+    "react-card-flip": "^0.5.0",
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8",
     "styled-components": "^4.1.3"

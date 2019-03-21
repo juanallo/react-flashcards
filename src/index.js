@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import DeckEffect from "./components/DeckEffect";
+import App from "./components/App";
 
-ReactDOM.render(<DeckEffect />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 serviceWorker.unregister();

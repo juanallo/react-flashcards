@@ -15,7 +15,6 @@ export default styled.div`
     /* The third layer shadow */
     0 20px 1px -9px rgba(0,0,0,0.15);
     /* Padding for demo purposes */
-    padding: 30px;
     box-sizing: border-box;
     width: 100%;
     height: 100%;
