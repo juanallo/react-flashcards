@@ -3,6 +3,7 @@ import DeckEffect from "./DeckEffect";
 import Header from "./Header";
 import styled from 'styled-components';
 import ReactCardFlip from 'react-card-flip';
+import Card from './Card';
 
 const AppStyled = styled.div`
 	display: flex;
@@ -32,17 +33,6 @@ const FixedDeckEffect = styled(DeckEffect)`
 	}
 `;
 
-const CurrentCard = styled.div`
-    height: 100%;
-    background: #fff;
-    box-sizing: border-box;
-    padding: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #dedede;
-`;
-
 export default class App extends Component {
 
 	constructor(props){
@@ -68,8 +58,8 @@ export default class App extends Component {
 				<Container>
 					<FixedDeckEffect>
 						<ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
-							<CurrentCard key="front">Test <button onClick={this.handleFlip}>Flip it!</button></CurrentCard>
-							<CurrentCard key="back">Test 1 <button onClick={this.handleFlip}>Flip it!</button></CurrentCard>
+							<Card key="front" onFlip={this.handleFlip}>Test</Card>
+							<Card key="back" onFlip={this.handleFlip}>Test 1</Card>
 						</ReactCardFlip>
 					</FixedDeckEffect>
 				</Container>
