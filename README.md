@@ -1,5 +1,7 @@
 # Flash Cards
 
+*A quick Project to keep on improving on react.*
+
 * Add Flash cards to learn a particular topic
 * Read flash cards one by one
 * Load a random flash card from a deck 
