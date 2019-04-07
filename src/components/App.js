@@ -148,7 +148,7 @@ export default class App extends Component {
 		return (
 			<AppStyled>
 				<SideDrawer show={this.state.showSideDrawer} onCloseDrawer={this.handleCloseSideDrawer}>
-					<Navigation items={this.state.decks}/>
+					<Navigation show={this.state.showSideDrawer} items={this.state.decks}/>
 				</SideDrawer>
 				<Header disabled={this.state.isLoading}
 						title={this.state.title}

@@ -50,7 +50,7 @@ const Navigation = (props) => {
 			<Ul>
 				{props.items.map(item => (
 					<li key={item.id}>
-						<Button onClick={e => props.onSelection(e, item.id)}>{item.label}</Button>
+						<Button tabIndex={props.show ? 0 : -1} onClick={e => props.onSelection(e, item.id)}>{item.label}</Button>
 					</li>
 				))}
 			</Ul>
