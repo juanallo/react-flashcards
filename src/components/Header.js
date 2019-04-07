@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Header = styled.div`
-	background: white; 
+	background: #5352ed; 
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -15,19 +15,39 @@ const DeckTitle = styled.h1`
 	line-height: 60px;
 	margin: 0;
 	box-sizing: border-box;
-	align-items: middle;
+	align-items: center;
+	font-size: 1.6rem;
+	font-weight: 300;
+	color: white;
 `;
 
 const DeckActions = styled.div`
 	display: flex;
 	align-items: center;
 	height: 100%;
-	padding: 0 20px;
 	justify-content: space-around;
 `;
 
 const Deckbutton = styled.button`
-	margin-left: 10px;
+	border: 0;
+    background: rgba(0, 0, 0, 0.2);
+    margin-left: 2px;
+    height: 100%;
+    min-width: 100px;
+    color: #fff;
+    font-size: 16px;
+    box-sizing: border-box;
+    
+    :hover {
+    	background: rgba(0, 0, 0, 0.4);
+    }
+    :active {
+    	background: rgba(0, 0, 0, 0.6);
+    }
+    :focus {
+    	border: 2px solid rgba(0, 0, 0, 0.6);
+    	outline: none;
+    }
 `;
 
 export default (props) => (

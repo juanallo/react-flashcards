@@ -138,8 +138,8 @@ export default class App extends Component {
 			<FixedDeckEffect>
 				<BouncyDiv animation={this.state.animation}>
 					<ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
-						<Card key="front" onFlip={this.handleFlip}>{card.question}</Card>
-						<Card key="back" onFlip={this.handleFlip}>{card.answer}</Card>
+						<Card key="front" onFlip={this.handleFlip} title="Question">{card.question}</Card>
+						<Card key="back" onFlip={this.handleFlip} title="Answer">{card.answer}</Card>
 					</ReactCardFlip>
 				</BouncyDiv>
 			</FixedDeckEffect>
