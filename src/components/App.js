@@ -7,6 +7,8 @@ import Card from './Card';
 import DeckApi from '../api/DeckApi';
 
 import * as animations from 'react-animations';
+import SideDrawer from "./SideDrawer";
+import Navigation from "./Navigation";
 
 const BouncyDiv = styled.div`
   ${({animation}) => {
@@ -59,22 +61,35 @@ export default class App extends Component {
 		this.state = {
 			isFlipped: false,
 			isLoading: true,
+			showSideDrawer: false,
+			animation: '',
 			cards:[],
 			selectedCardIndex: 0,
-			animation: ''
+			title: '',
+			decks: [{
+				id: 'lr1',
+				label: 'Learning React Deck'
+			},
+				{
+				id: 'lr2',
+				label: 'Learning React Deck2'
+			}]
 		};
 
 		this.handleFlip = this.handleFlip.bind(this);
 		this.handleNextCard = this.handleNextCard.bind(this);
 		this.handlePreviousCard = this.handlePreviousCard.bind(this);
 		this.handleRandomCard = this.handleRandomCard.bind(this);
+		this.handleCloseSideDrawer = this.handleCloseSideDrawer.bind(this);
+		this.handleOpenSideDrawer = this.handleOpenSideDrawer.bind(this);
 	}
 
 	componentDidMount(){
 		this._api.getCards().then((cards) =>{
 			this.setState({
 				isLoading: false,
-				cards: [...cards]
+				cards: [...cards],
+				title: 'Learning React Deck'
 			})
 		});
 	}
@@ -103,6 +118,18 @@ export default class App extends Component {
 		this._unFlipAndChangeIndex(index, 'hinge');
 	}
 
+	handleCloseSideDrawer(){
+		this.setState({
+			showSideDrawer: false
+		})
+	}
+
+	handleOpenSideDrawer(){
+		this.setState({
+			showSideDrawer: true
+		})
+	}
+
 	_unFlipAndChangeIndex(index, animation){
 		this.setState({
 			animation: animation,
@@ -120,10 +147,15 @@ export default class App extends Component {
 	render(){
 		return (
 			<AppStyled>
-				<Header title="Learning React Deck"
+				<SideDrawer show={this.state.showSideDrawer} onCloseDrawer={this.handleCloseSideDrawer}>
+					<Navigation items={this.state.decks}/>
+				</SideDrawer>
+				<Header disabled={this.state.isLoading}
+						title={this.state.title}
 						onNext={this.handleNextCard}
 				        onPrev={this.handlePreviousCard}
 				        onRandom={this.handleRandomCard}
+				        onOpenSideDrawer={this.handleOpenSideDrawer}
 				/>
 				<Container>
 					{this.state.isLoading ? this.renderLoading() : this.renderCard()}

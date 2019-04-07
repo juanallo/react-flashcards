@@ -6,7 +6,7 @@ import CodeBlock from "./CodeBlock";
 const CurrentCard = styled.div`
     height: 100%;
     box-sizing: border-box;
-    background: #dedede;
+    background: #ced6e0;
     position: relative;
     display: flex;
     flex-direction: column;
