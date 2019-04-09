@@ -66,14 +66,7 @@ export default class App extends Component {
 			cards:[],
 			selectedCardIndex: 0,
 			title: '',
-			decks: [{
-				id: 'lr1',
-				label: 'Learning React Deck'
-			},
-				{
-				id: 'lr2',
-				label: 'Learning React Deck2'
-			}]
+			decks: []
 		};
 
 		this.handleFlip = this.handleFlip.bind(this);
@@ -85,12 +78,25 @@ export default class App extends Component {
 		this.handleNavigationSelection = this.handleNavigationSelection.bind(this);
 	}
 
-	componentDidMount(){
-		this._api.getCards().then((cards) =>{
+	async componentDidMount(){
+		await this._api.setup();
+
+		this._api.getDecks().then(({decks: deckList}) => {
+			const decks = deckList.map((d, i) => ({
+				...d,
+				selected: i === 0
+			}));
+
+			this.setState({
+				decks: decks
+			});
+		});
+
+		this._api.getCards().then(({cards, title}) => {
 			this.setState({
 				isLoading: false,
 				cards: [...cards],
-				title: 'Learning React Deck'
+				title
 			})
 		});
 	}
@@ -131,8 +137,32 @@ export default class App extends Component {
 		})
 	}
 
-	handleNavigationSelection(e, id){
+	handleNavigationSelection(e, {label}){
+		e.preventDefault();
+		e.target.blur();
+		this.setState({
+			isLoading: true,
+			showSideDrawer: false
+		},() => {
+			this.changeDeck(label);
+		});
+	}
 
+	changeDeck(label){
+		this._api.getCards(label).then(({cards, title}) => {
+			console.log(cards);
+			const decks = this.state.decks.map(d => ({
+				...d,
+				selected: d.label === title
+			}));
+
+			this.setState({
+				isLoading: false,
+				cards: [...cards],
+				decks,
+				title
+			})
+		});
 	}
 
 	_unFlipAndChangeIndex(index, animation){

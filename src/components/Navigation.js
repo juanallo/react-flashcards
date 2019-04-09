@@ -63,9 +63,9 @@ const Navigation = (props) => {
 			<Ul>
 				{props.items.map((item, i) => (
 					<li key={item.id}>
-						<Button className={i === 0 ? 'selected' : ''}
+						<Button className={item.selected ? 'selected' : ''}
 						        tabIndex={props.show ? 0 : -1}
-						        onClick={e => props.onSelection(e, item.id)}
+						        onClick={e => props.onSelection(e, item)}
 						>
 							{item.label}
 						</Button>
