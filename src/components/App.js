@@ -82,6 +82,7 @@ export default class App extends Component {
 		this.handleRandomCard = this.handleRandomCard.bind(this);
 		this.handleCloseSideDrawer = this.handleCloseSideDrawer.bind(this);
 		this.handleOpenSideDrawer = this.handleOpenSideDrawer.bind(this);
+		this.handleNavigationSelection = this.handleNavigationSelection.bind(this);
 	}
 
 	componentDidMount(){
@@ -130,6 +131,10 @@ export default class App extends Component {
 		})
 	}
 
+	handleNavigationSelection(e, id){
+
+	}
+
 	_unFlipAndChangeIndex(index, animation){
 		this.setState({
 			animation: animation,
@@ -148,7 +153,9 @@ export default class App extends Component {
 		return (
 			<AppStyled>
 				<SideDrawer show={this.state.showSideDrawer} onCloseDrawer={this.handleCloseSideDrawer}>
-					<Navigation show={this.state.showSideDrawer} items={this.state.decks}/>
+					<Navigation show={this.state.showSideDrawer}
+					            onSelection={this.handleNavigationSelection}
+					            items={this.state.decks}/>
 				</SideDrawer>
 				<Header disabled={this.state.isLoading}
 						title={this.state.title}
