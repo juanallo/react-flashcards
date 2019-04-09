@@ -2,13 +2,17 @@ import config from "../config";
 
 export default class GoogleSheetsApi {
 
+	constructor() {
+		this.cache = {};
+	}
+
 	async setup() {
 		return new Promise((resolve) => {
 			window.gapi.load("client", this._initClient.bind(this, resolve));
 		});
 	}
 
-	_initClient(resolve){
+	_initClient(resolve) {
 		window.gapi.client
 			.init({
 				apiKey: config.apiKey,
@@ -21,31 +25,38 @@ export default class GoogleSheetsApi {
 
 	async getCards(id) {
 		return new Promise((resolve) => {
-			window.gapi.client.load("sheets", "v4", () => {
-				window.gapi.client.sheets.spreadsheets.values
-					.get({
-						spreadsheetId: config.spreadsheetId,
-						range: id ? `'${id}'!${config.range}` : config.range
-					})
-					.then(
-						response => {
-							const cards = response.result.values.map((row) => {
-								return  {
-									"id": row[0],
-									"question": row[1],
-									"answer": row[2]
-								}
-							});
+			if (this.cache[id]) {
+				resolve(this.cache[id]);
+			}
+			else {
+				window.gapi.client.load("sheets", "v4", () => {
+					window.gapi.client.sheets.spreadsheets.values
+						.get({
+							spreadsheetId: config.spreadsheetId,
+							range: id ? `'${id}'!${config.range}` : config.range
+						})
+						.then(
+							response => {
+								const cards = response.result.values.map((row) => {
+									return {
+										"id": row[0],
+										"question": row[1],
+										"answer": row[2]
+									}
+								});
 
-							const title = response.result.range.split('!')[0].replace(/'/g, '');
+								const title = response.result.range.split('!')[0].replace(/'/g, '');
 
-							resolve({ cards, title});
-						},
-						response => {
-							resolve(false, response.result.error);
-						}
-					);
-			});
+								this.cache[title] = {cards, title};
+
+								resolve({cards, title});
+							},
+							response => {
+								resolve(false, response.result.error);
+							}
+						);
+				});
+			}
 		})
 	}
 
@@ -62,7 +73,7 @@ export default class GoogleSheetsApi {
 								id: s.properties.sheetId,
 								label: s.properties.title
 							}));
-							resolve({ decks });
+							resolve({decks});
 						},
 						response => {
 							resolve(false, response.result.error);
