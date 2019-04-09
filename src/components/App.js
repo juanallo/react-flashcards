@@ -158,6 +158,7 @@ export default class App extends Component {
 
 			this.setState({
 				isLoading: false,
+				selectedCardIndex: 0,
 				cards: [...cards],
 				decks,
 				title
