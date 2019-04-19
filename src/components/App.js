@@ -159,6 +159,7 @@ export default class App extends Component {
 			this.setState({
 				isLoading: false,
 				selectedCardIndex: 0,
+				isFlipped: false,
 				cards: [...cards],
 				decks,
 				title
